@@ -62,3 +62,33 @@ var mergeTwoLists = function (list1, list2) {
   }
 };
 ```
+
+解题思路：迭代
+
+```js
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function (list1, list2) {
+  const prehead = new ListNode(-1) // prehead 作为头部
+  let prev = prehead // prev 作为指针
+  // 均有值的情况循环
+  while (list1 !== null && list2 !== null) {
+    if (list1.val <= list2.val) {
+      prev.next = list1 // 初始值prev.next => null; 赋值后为 [head, next: [list1]]
+      list1 = list1.next // 减少一位
+    } else {
+      prev.next = list2
+      list2 = list2.next // 减少一位
+    }
+    // 可以理解为 指针域由 head.next => head.next.next
+    prev = prev.next
+  }
+  // 匹配完后会存在list1 或者 list2 为null的情况
+  // 由于list1/list2为有序链表 所以将prev.next指向剩余部分
+  // 此时prev的val为最后一位，next为null
+  prev.next = list1 !== null ? list1 : list2
+};
+```
