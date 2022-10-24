@@ -28,25 +28,115 @@ for (int i = 0; i < k; i++) {
 
 **示例1：**
 ```
+输入：nums = [1,1,2]
+输出：2, nums = [1,2,_]
+解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。
 ```
 
 **示例2：**
 ```
-```
-
-**示例3：**
-```
+输入：nums = [0,0,1,1,1,2,2,3,3,4]
+输出：5, nums = [0,1,2,3,4]
+解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
 ```
 
 **提示：**
 
-+ 
-
-**进阶：** 
++ `1 <= nums.length <= 3 * 104`
++ `-104 <= nums[i] <= 104`
++ `nums` 已按 **升序** 排列
 
 ### 解法
 
-解题思路：
+解题思路：由于题目是删除，又需要改变原数组，就想到了数组的splice，但splice改变原数组后会改变for循环次数，导致i对应错误，在该基础上加上i--，当删除相同项时重新执行该次循环
 
 ```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function (nums) {
+  let maps = new Map()
+  for (let i = 0; i < nums.length; i++) {
+    if (maps.has(nums[i])) {
+      nums.splice(i, 1)
+      i--
+    } else {
+      maps.set(nums[i], i)
+    }
+  }
+  return nums.length
+};
+```
+
+解题思路：思路与解法1一致，只是替换Map而用变量
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function (nums) {
+  let cur = nums[0], i = 1
+  while (i < nums.length) {
+    if (cur === nums[i]) {
+      nums.splice(i, 1)
+    } else {
+      cur = nums[i++]
+    }
+  }
+  return nums.length
+};
+```
+
+解题思路：快慢双指针，根据题解思路，题解并没有删除原数组长度，只是根据快慢指针，修改对应索引的值；快指针循环，慢指针记录不相同个数及对应索引
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function (nums) {
+  let slowindex = 0
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[slowindex] !== nums[i]) {
+      slowindex++
+      nums[slowindex] = nums[i]
+    }
+  }
+  // while 内存消耗比for大
+  // let slowindex = 0, i = 1
+  // while (i < nums.length) {
+  //   if (nums[slowindex] !== nums[i]) {
+  //     slowindex++
+  //     nums[slowindex] = nums[i]
+  //   }
+  //   i++
+  // }
+  return slowindex + 1
+};
+```
+
+解题思路：官方题解，快慢指针
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function (nums) {
+  const n = nums.length;
+  if (n === 0) {
+    return 0;
+  }
+  let fast = 1, slow = 1;
+  while (fast < n) {
+    if (nums[fast] !== nums[fast - 1]) {
+      nums[slow] = nums[fast];
+      ++slow;
+    }
+    ++fast;
+  }
+  return slow;
+};
 ```
