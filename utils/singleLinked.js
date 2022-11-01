@@ -60,6 +60,7 @@ LinkedList.prototype.removeAt = function (index) {
     node.next = cur.next
   }
   this.length--
+  return cur.val
 }
 
 // 删除链表中对应的元素
