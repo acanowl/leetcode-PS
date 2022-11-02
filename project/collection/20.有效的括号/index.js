@@ -1,4 +1,4 @@
-var isValid = function (s) {
+export const isValid = s => {
   const maps = { ')': '(', ']': '[', '}': '{' }
   let stack = []
   // 如果长度只有1，则无法形成完整的括号
@@ -17,7 +17,7 @@ var isValid = function (s) {
     }
   }
   return stack.length === 0
-};
+}
 
 // const res = isValid("([]){}")
 // const res = isValid("}")
