@@ -4,13 +4,16 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest --ui"
   },
   "keywords": [],
   "author": "Eddy",
   "license": "ISC",
   "dependencies": {
     "@ao/data-structure": "workspace:^0.0.1",
+    "@vitest/ui": "^0.24.5",
+    "unplugin-auto-import": "^0.11.4",
+    "vite": "^3.2.0",
     "vitest": "^0.24.5"
   }
 }
