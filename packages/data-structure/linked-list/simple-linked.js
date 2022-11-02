@@ -1,12 +1,8 @@
-class ListNode {
-  constructor(val, next) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
-  }
-}
+// const { ListNode } = require('./config')
+import { ListNode } from './config'
 
 // 数组转换
-function concatLinked(arr) {
+export const concatLinked = (arr) => {
   let reshead = new ListNode()
 
   let res = reshead
@@ -19,7 +15,7 @@ function concatLinked(arr) {
 }
 
 // 测试查看
-function join(listnode, string) {
+export const join = (listnode, string) => {
   let cur = listnode
   let str = ''
   while (cur) {
@@ -30,4 +26,4 @@ function join(listnode, string) {
   return str
 }
 
-module.exports = { ListNode, concatLinked, join }
+// module.exports = { ListNode, concatLinked, join }

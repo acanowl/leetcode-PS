@@ -1,4 +1,6 @@
-const { DoubleLinkedList } = require("./doubleLinked")
+// const { DoubleLinkedList } = require("./doubleLinked")
+// const { DoubleLinkedList } = require('data-structure')
+import { DoubleLinkedList } from '@ao/data-structure'
 
 let dbLinkedList = new DoubleLinkedList()
 

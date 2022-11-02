@@ -1,0 +1,16 @@
+{
+  "name": "ao-leetcode-ps",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Eddy",
+  "license": "ISC",
+  "dependencies": {
+    "@ao/data-structure": "workspace:^0.0.1",
+    "vitest": "^0.24.5"
+  }
+}
