@@ -1,17 +1,16 @@
-// 1
-// var mySqrt = function (x) {
-//   const mid = Math.floor(x / 2) + 1
-//   for (let i = 0; i <= mid; i++) {
-//     if (i * i > x) {
-//       return i - 1
-//     }
-//     if (i * i === x) {
-//       return i
-//     }
-//   }
-// }
+export const mySqrt_1 = (x) => {
+  const mid = Math.floor(x / 2) + 1
+  for (let i = 0; i <= mid; i++) {
+    if (i * i > x) {
+      return i - 1
+    }
+    if (i * i === x) {
+      return i
+    }
+  }
+}
 
-var mySqrt = function (x) {
+export const mySqrt_2 = (x) => {
   let left = 0, right = x
   while (left <= right) {
     console.log(left, right, Math.floor((right - left) / 2))
@@ -24,8 +23,3 @@ var mySqrt = function (x) {
   }
   return right
 }
-
-// console.log(mySqrt(0), 'to be 0')
-// console.log(mySqrt(4), 'to be 2')
-console.log(mySqrt(8), 'to be 2')
-// console.log(mySqrt(99), 'to be 9')

@@ -37,12 +37,3 @@ export const searchInsert_3 = (nums, target) => {
   }
   return i
 }
-
-console.time('start')
-const index1 = searchInsert_1([1, 3, 5, 6], 2)
-console.timeEnd('start')
-const index2 = searchInsert_1([1, 3, 5, 6], 5)
-const index3 = searchInsert_1([1, 3, 5, 6], 7)
-console.log(index1, ' tobe 1')
-console.log(index2, ' tobe 2')
-console.log(index3, ' tobe 4')
