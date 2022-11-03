@@ -1,5 +1,5 @@
 // 题解1 => 0.113ms
-var searchInsert = function (nums, target) {
+export const searchInsert_1 = (nums, target) => {
   let start = 0, end = nums.length - 1
   while (start <= end) {
     const mid = Math.floor((start + end) / 2)
@@ -13,7 +13,7 @@ var searchInsert = function (nums, target) {
 }
 
 // 题解2 => 0.118ms
-var searchInsert = function (nums, target) {
+export const searchInsert_2 = (nums, target) => {
   let slow = 0
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] < target) {
@@ -26,7 +26,7 @@ var searchInsert = function (nums, target) {
 }
 
 // 题解3 => 0.102ms
-var searchInsert = function (nums, target) {
+export const searchInsert_3 = (nums, target) => {
   let i = 0
   while (i < nums.length) {
     if (nums[i] < target) {
@@ -39,10 +39,10 @@ var searchInsert = function (nums, target) {
 }
 
 console.time('start')
-const index1 = searchInsert([1, 3, 5, 6], 2)
+const index1 = searchInsert_1([1, 3, 5, 6], 2)
 console.timeEnd('start')
-const index2 = searchInsert([1, 3, 5, 6], 5)
-const index3 = searchInsert([1, 3, 5, 6], 7)
+const index2 = searchInsert_1([1, 3, 5, 6], 5)
+const index3 = searchInsert_1([1, 3, 5, 6], 7)
 console.log(index1, ' tobe 1')
 console.log(index2, ' tobe 2')
 console.log(index3, ' tobe 4')

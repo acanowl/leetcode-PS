@@ -18,8 +18,3 @@ export const isValid = s => {
   }
   return stack.length === 0
 }
-
-// const res = isValid("([]){}")
-// const res = isValid("}")
-// const res = isValid(")(){}")
-// console.log(res, 'res')

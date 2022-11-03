@@ -7,3 +7,4 @@
 
 **22/11/3**
 1. add *.test.js for all test files of project/collecion
+2. learn `unplugin-auto-import`, try to auto import packages of myself.
