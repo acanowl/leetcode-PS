@@ -49,3 +49,30 @@ var maxRepeating = function (sequence, word) {
   return count - 1
 };
 ```
+
+解题思路：简单枚举 + 动态规划，循环 `sequence`，通过 `word` 长度截取字符串进行对比，如果相同则计数加一，不等则返回上一次循环，计数清零，最后得到 **最大值**
+
+```js
+/**
+ * @param {string} sequence
+ * @param {string} word
+ * @return {number}
+ */
+var maxRepeating = function (sequence, word) {
+  let sl = sequence.length, wl = word.length, max = 0, count = 0, i = 0
+  if (sl < wl) return max
+
+  while (i < sl) {
+    let cur = sequence.slice(i, i + wl)
+    if (cur === word) {
+      count++
+      i = i + wl
+      max = Math.max(max, count)
+    } else {
+      i += count > 0 ? 1 - wl : 1
+      count = 0
+    }
+  }
+  return max
+};
+```
