@@ -4,13 +4,15 @@
 
 如果不存在公共前缀，返回空字符串 ""。
 
-**示例1：**
+**示例 1：**
+
 ```
 输入：strs = ["flower","flow","flight"]
 输出："fl"
 ```
 
-**示例2：**
+**示例 2：**
+
 ```
 输入：strs = ["dog","racecar","car"]
 输出：""
@@ -19,13 +21,13 @@
 
 **提示：**
 
-+ 1 <= strs.length <= 200
-+ 0 <= strs[i].length <= 200
-+ strs[i] 仅由小写英文字母组成
+- `1 <= strs.length <= 200`
+- `0 <= strs[i].length <= 200`
+- `strs[i]` 仅由小写英文字母组成
 
 ### 解法
 
-解题思路：两两对比，for循环如果不相同则break结束循环，返回相同公共前缀的字符串与下一个字符串对比。
+解题思路：两两对比，for 循环如果不相同则 break 结束循环，返回相同公共前缀的字符串与下一个字符串对比。
 
 ```js
 /**
@@ -43,10 +45,10 @@ var longestCommonPrefix = function (strs) {
     return str
   }
   return strs.reduce(getCommonPrefix)
-};
+}
 ```
 
-解题思路：数组按字符串长短从短到长排序，以第一个字符串为对比值，for循环进行判断第一个是否存在对比值，如果不存在则i--进行重新循环
+解题思路：数组按字符串长短从短到长排序，以第一个字符串为对比值，for 循环进行判断第一个是否存在对比值，如果不存在则 i--进行重新循环
 
 ```js
 /**
@@ -63,7 +65,7 @@ var longestCommonPrefix = function (strs) {
     }
   }
   return cur
-};
+}
 ```
 
 解题思路：暴力循环，数组按字符串长短从短到长排序，以第一个字符串为对比值，对比每一个字符串是否相同，不同则将对比值减少一位
@@ -74,16 +76,16 @@ var longestCommonPrefix = function (strs) {
  * @return {string}
  */
 var longestCommonPrefix = function (strs) {
-  strs.sort((a, b) => a.length - b.length);
-  let str = strs[0] || '';
+  strs.sort((a, b) => a.length - b.length)
+  let str = strs[0] || ''
   for (let i = 0; i < strs.length; i++) {
     for (let j = 0; j < str.length; j++) {
       if (strs[i][j] !== str[j]) {
         if (j === 0) return ''
-        str = str.substr(0, j);
+        str = str.substr(0, j)
       }
     }
   }
-  return str;
-};
+  return str
+}
 ```

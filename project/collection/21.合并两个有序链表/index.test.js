@@ -7,13 +7,13 @@ let linkedList2 = new LinkedList()
 linkedList1.concat(1, 2, 4)
 linkedList2.concat(1, 3, 4)
 
-let list1 = linkedList1.head, list2 = linkedList2.head
+let list1 = linkedList1.head,
+  list2 = linkedList2.head
 
 const lists1 = mergeTwoLists_1(list1, list2)
 // const lists2 = mergeTwoLists_2(list1, list2)
 
 describe('mergeTwoLists', () => {
-
   test('mergeTwoLists 1', () => {
     expect(linkedJoin(lists1, '--')).toBe('1--1--2--3--4--4')
   })

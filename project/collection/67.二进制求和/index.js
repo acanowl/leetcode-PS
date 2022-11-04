@@ -4,7 +4,7 @@ export const addBinary_1 = (a, b) => {
     let sum = pos
     sum += i >= 0 ? parseInt(a[i]) : 0
     sum += j >= 0 ? parseInt(b[j]) : 0
-    res = sum % 2 + res
+    res = (sum % 2) + res
     pos = Math.floor(sum / 2)
   }
   res = (pos == 1 ? pos : '') + res
@@ -19,7 +19,7 @@ export const addBinary_2 = (a, b) => {
     let sum = pos
     sum += i >= 0 ? parseInt(a[i]) : 0
     sum += j >= 0 ? parseInt(b[j]) : 0
-    res = sum % 2 + res
+    res = (sum % 2) + res
     pos = Math.floor(sum / 2)
     i--, j--
   }
@@ -38,7 +38,7 @@ export const addBinary_3 = (a, b) => {
 
   for (let i = max; i > 0; i--) {
     const sum = Number(a[i - 1]) + Number(b[i - 1]) + pos
-    res = sum % 2 + res
+    res = (sum % 2) + res
     pos = Math.floor(sum / 2)
   }
   res = (pos ? '1' : '') + res

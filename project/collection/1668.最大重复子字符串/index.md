@@ -4,21 +4,24 @@
 
 给你一个字符串 `sequence` 和 `word` ，请你返回 **最大重复值** `k` 。
 
-**示例1：**
+**示例 1：**
+
 ```
 输入：sequence = "ababc", word = "ab"
 输出：2
 解释："abab" 是 "ababc" 的子字符串。
 ```
 
-**示例2：**
+**示例 2：**
+
 ```
 输入：sequence = "ababc", word = "ba"
 输出：1
 解释："ba" 是 "ababc" 的子字符串，但 "baba" 不是 "ababc" 的子字符串。
 ```
 
-**示例3：**
+**示例 3：**
+
 ```
 输入：sequence = "ababc", word = "ac"
 输出：0
@@ -27,9 +30,9 @@
 
 **提示：**
 
-+ `1 <= sequence.length <= 100`
-+ `1 <= word.length <= 100`
-+ `sequence` 和 `word` 都只包含小写英文字母。
+- `1 <= sequence.length <= 100`
+- `1 <= word.length <= 100`
+- `sequence` 和 `word` 都只包含小写英文字母。
 
 ### 解法
 
@@ -47,7 +50,7 @@ var maxRepeating = function (sequence, word) {
     count++
   }
   return count - 1
-};
+}
 ```
 
 解题思路：简单枚举 + 动态规划，循环 `sequence`，通过 `word` 长度截取字符串进行对比，如果相同则计数加一，不等则返回上一次循环，计数清零，最后得到 **最大值**
@@ -59,7 +62,11 @@ var maxRepeating = function (sequence, word) {
  * @return {number}
  */
 var maxRepeating = function (sequence, word) {
-  let sl = sequence.length, wl = word.length, max = 0, count = 0, i = 0
+  let sl = sequence.length,
+    wl = word.length,
+    max = 0,
+    count = 0,
+    i = 0
   if (sl < wl) return max
 
   while (i < sl) {
@@ -74,5 +81,5 @@ var maxRepeating = function (sequence, word) {
     }
   }
   return max
-};
+}
 ```

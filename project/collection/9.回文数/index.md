@@ -4,22 +4,25 @@
 
 回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
 
-+ 例如，`121` 是回文，而 `123` 不是。
+- 例如，`121` 是回文，而 `123` 不是。
 
-**示例1：**
+**示例 1：**
+
 ```
 输入：x = 121
 输出：true
 ```
 
-**示例2：**
+**示例 2：**
+
 ```
 输入：x = -121
 输出：false
 解释：从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
 ```
 
-**示例3：**
+**示例 3：**
+
 ```
 输入：x = 10
 输出：false
@@ -28,7 +31,7 @@
 
 **提示：**
 
-+ -231 <= x <= 231 - 1
+- `-2**31 <= x <= 2**31 - 1`
 
 **进阶：** 你能不将整数转为字符串来解决这个问题吗？
 
@@ -44,7 +47,7 @@
 var isPalindrome = function (x) {
   const sx = `${x}`
   return sx.split('').reverse().join('') === sx
-};
+}
 ```
 
 解题思路：循环反转字符串，跟原字符串进行判断
@@ -57,11 +60,11 @@ var isPalindrome = function (x) {
 var isPalindrome = function (x) {
   const stringX = x + ''
   let newx = ''
-  for(let i = stringX.length -1 ; i>= 0; i--) {
+  for (let i = stringX.length - 1; i >= 0; i--) {
     newx += stringX[i]
   }
   return stringX === newx
-};
+}
 ```
 
 解题思路：双指针，第一个与最后一个进行对比
@@ -78,10 +81,10 @@ var isPalindrome = function (x) {
     if (x[i] !== x[xlen - i - 1]) return false
   }
   return true
-};
+}
 ```
 
-解题思路：类比字符串reverse，数字也可以进行反转，反转的主要思想是，以10为除数，将num取余得到的数字作为后续的最高位
+解题思路：类比字符串 reverse，数字也可以进行反转，反转的主要思想是，以 10 为除数，将 num 取余得到的数字作为后续的最高位
 
 ```js
 /**
@@ -89,14 +92,14 @@ var isPalindrome = function (x) {
  * @return {boolean}
  */
 var isPalindrome = function (x) {
-  if (x < 0) return false;
-  if (x < 10) return true;
-  let n = 10 ** Math.floor(Math.log10(x));
+  if (x < 0) return false
+  if (x < 10) return true
+  let n = 10 ** Math.floor(Math.log10(x))
   while (n > 1 && x > 0) {
-    if (Math.floor(x / n) !== x % 10) return false;
-    x = Math.floor((x % n) / 10);
-    n /= 100;
+    if (Math.floor(x / n) !== x % 10) return false
+    x = Math.floor((x % n) / 10)
+    n /= 100
   }
-  return true;
-};
+  return true
+}
 ```

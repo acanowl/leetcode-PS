@@ -31,7 +31,7 @@
 
 **提示：**
 
-- `1 <= s.length <= 104`
+- `1 <= s.length <= 10**4`
 - `s` 仅由括号 `'()[]{}'` 组成
 
 ### 解法
@@ -44,21 +44,21 @@
  * @return {boolean}
  */
 var isValid = function (s) {
-  const maps = { ")": "(", "]": "[", "}": "{" };
-  let stack = [];
-  if (s.length === 1) return false;
+  const maps = { ')': '(', ']': '[', '}': '{' }
+  let stack = []
+  if (s.length === 1) return false
   for (let i = 0; i < s.length; i++) {
-    const cur = s[i];
-    if (cur === "(" || cur === "{" || cur === "[") {
-      stack.push(cur);
+    const cur = s[i]
+    if (cur === '(' || cur === '{' || cur === '[') {
+      stack.push(cur)
     } else {
       if (stack[stack.length - 1] === maps[cur]) {
-        stack.pop();
+        stack.pop()
       } else {
-        return false;
+        return false
       }
     }
   }
-  return stack.length === 0;
-};
+  return stack.length === 0
+}
 ```

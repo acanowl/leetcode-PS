@@ -12,7 +12,6 @@ describe('simpleLinked', () => {
 let dbLinkedList = new DoubleLinkedList()
 
 describe('doubleLinked', () => {
-
   // dbLinkedList.append(10)
   // dbLinkedList.append(15)
   // dbLinkedList.append(20)

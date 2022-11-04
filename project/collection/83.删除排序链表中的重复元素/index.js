@@ -4,7 +4,7 @@ import { ListNode, linkedJoin } from '@ao/data-structure'
  * @param {ListNode} head
  * @return {ListNode}
  */
-export const deleteDuplicates_1 = (head) => {
+export const deleteDuplicates_1 = head => {
   let news = new ListNode(NaN)
 
   let prev = news
@@ -18,7 +18,7 @@ export const deleteDuplicates_1 = (head) => {
       console.log(linkedJoin(prev, '-->'), 'after')
       // 1 pre => 1 1 2 3 3
     } else {
-      // before 2 
+      // before 2
       prev.next = head.next
       // 2 pre => 1 2 3 3   news => -1 1 2 3 3
       console.log(linkedJoin(prev, '-->'), '===')
@@ -31,10 +31,9 @@ export const deleteDuplicates_1 = (head) => {
   // console.log(linkedJoin(prev, '-->'), 'prev')
 
   return news.next
-
 }
 
-export const deleteDuplicates_2 = (head) => {
+export const deleteDuplicates_2 = head => {
   if (!head) return head
 
   let prev = head

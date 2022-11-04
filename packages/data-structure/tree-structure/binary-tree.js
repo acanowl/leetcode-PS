@@ -1,4 +1,4 @@
-import { BinaryTreeNode } from "./config";
+import { BinaryTreeNode } from './config'
 
 export class BinaryTree {
   constructor() {

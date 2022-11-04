@@ -23,8 +23,7 @@ export class LinkedList {
   }
   // 在链表的指定位置插入节点
   insert(index, val) {
-    if (index < 0 || index > this.length)
-      return false
+    if (index < 0 || index > this.length) return false
 
     let node = new ListNode(val)
     if (index === 0) {
@@ -40,8 +39,7 @@ export class LinkedList {
   }
   // 删除链表中指定位置的元素，并返回这个元素的值
   removeAt(index) {
-    if (index < 0 || index > this.length + 1)
-      return null
+    if (index < 0 || index > this.length + 1) return null
 
     let cur = this.head
     if (index === 0) {
@@ -63,8 +61,7 @@ export class LinkedList {
   indexOf(val) {
     let cur = this.head
     for (let i = 0; i < this.length; i++) {
-      if (cur.val === val)
-        return i
+      if (cur.val === val) return i
       cur = cur.next
     }
     return -1
@@ -73,16 +70,14 @@ export class LinkedList {
   find(val) {
     let cur = this.head
     while (cur) {
-      if (cur.val === val)
-        return cur
+      if (cur.val === val) return cur
       cur = cur.next
     }
     return null
   }
   // 获取链表中索引所对应的元素
   getElementAt(index) {
-    if (index < 0 || index > this.length + 1)
-      return null
+    if (index < 0 || index > this.length + 1) return null
 
     let cur = this.head
     while (index--) {

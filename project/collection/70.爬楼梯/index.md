@@ -4,7 +4,8 @@
 
 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
 
-**示例1：**
+**示例 1：**
+
 ```
 输入：n = 2
 输出：2
@@ -13,7 +14,8 @@
 2. 2 阶
 ```
 
-**示例2：**
+**示例 2：**
+
 ```
 输入：n = 3
 输出：3
@@ -25,7 +27,7 @@
 
 **提示：**
 
-+ `1 <= n <= 45`
+- `1 <= n <= 45`
 
 ### 解法
 
@@ -50,9 +52,10 @@ var climbStairs = function (n) {
  * @return {number}
  */
 var climbStairs = function (n) {
-  let pre = 1, cur = 1
+  let pre = 1,
+    cur = 1
   for (let i = 0; i <= n; i++) {
-    let temp = cur 
+    let temp = cur
     cur = temp + pre
     pre = temp
   }

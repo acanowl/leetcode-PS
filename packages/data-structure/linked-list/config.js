@@ -5,8 +5,8 @@
  */
 export class ListNode {
   constructor(val, next) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
+    this.val = val === undefined ? 0 : val
+    this.next = next === undefined ? null : next
   }
 }
 
@@ -17,9 +17,9 @@ export class ListNode {
  */
 export class DoubleListNode {
   constructor(val, next, prev) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
-    this.prev = (prev === undefined ? null : prev)
+    this.val = val === undefined ? 0 : val
+    this.next = next === undefined ? null : next
+    this.prev = prev === undefined ? null : prev
   }
 }
 
@@ -29,8 +29,7 @@ export const linkedJoin = (nodelists, string) => {
   let str = ''
   while (cur) {
     str += cur.val
-    if (cur.next)
-      str += string
+    if (cur.next) str += string
     cur = cur.next
   }
   return str

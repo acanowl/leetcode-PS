@@ -1,4 +1,4 @@
-export const mySqrt_1 = (x) => {
+export const mySqrt_1 = x => {
   const mid = Math.floor(x / 2) + 1
   for (let i = 0; i <= mid; i++) {
     if (i * i > x) {
@@ -10,7 +10,7 @@ export const mySqrt_1 = (x) => {
   }
 }
 
-export const mySqrt_2 = (x) => {
+export const mySqrt_2 = x => {
   let left = 0, right = x
   while (left <= right) {
     console.log(left, right, Math.floor((right - left) / 2))
