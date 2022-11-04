@@ -1,5 +1,4 @@
-// const { ListNode } = require('./config')
-import { ListNode } from './config'
+import { ListNode, linkedJoin, linkedConcat } from './config'
 
 /**
  * @description: 创建链表类
@@ -110,16 +109,10 @@ export class LinkedList {
   }
   // 序列化链表
   join(string) {
-    let cur = this.head
-    let str = ''
-    while (cur) {
-      str += cur.val
-      if (cur.next)
-        str += string
-      cur = cur.next
-    }
-    return str
+    return linkedJoin(this.head, string)
+  }
+  // 数组拼接
+  concat(...items) {
+    linkedConcat.call(this, ...items)
   }
 }
-
-// module.exports = { ListNode, LinkedList }

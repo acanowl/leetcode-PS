@@ -22,3 +22,30 @@ export class DoubleListNode {
     this.prev = (prev === undefined ? null : prev)
   }
 }
+
+// 序列化链表
+export const linkedJoin = (nodelists, string) => {
+  let cur = nodelists
+  let str = ''
+  while (cur) {
+    str += cur.val
+    if (cur.next)
+      str += string
+    cur = cur.next
+  }
+  return str
+}
+
+// 数组拼接
+export function linkedConcat(...items) {
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i]
+    if (Array.isArray(item)) {
+      for (let j = 0; j < item.length; j++) {
+        this.append(item[j])
+      }
+    } else {
+      this.append(item)
+    }
+  }
+}
