@@ -1,19 +1,24 @@
-import { concatLinked, join } from '@ao/data-structure'
-import { mergeTwoLists, mergeTwoLists_1 } from './index'
+import { LinkedList, linkedJoin } from '@ao/data-structure'
+import { mergeTwoLists_1, mergeTwoLists_2 } from './index'
 
-let list1Arr = [1, 2, 4], list2Arr = [1, 3, 4]
+let linkedList1 = new LinkedList()
+let linkedList2 = new LinkedList()
 
-let list1 = concatLinked(list1Arr), list2 = concatLinked(list2Arr)
-const lists = mergeTwoLists(list1, list2)
-// const lists1 = mergeTwoLists_1(list1, list2)
+linkedList1.concat(1, 2, 4)
+linkedList2.concat(1, 3, 4)
+
+let list1 = linkedList1.head, list2 = linkedList2.head
+
+const lists1 = mergeTwoLists_1(list1, list2)
+// const lists2 = mergeTwoLists_2(list1, list2)
 
 describe('mergeTwoLists', () => {
 
   test('mergeTwoLists 1', () => {
-    expect(join(lists, '--')).toBe('1--1--2--3--4--4')
+    expect(linkedJoin(lists1, '--')).toBe('1--1--2--3--4--4')
   })
 
-  // test('mergeTwoLists 2', () => {
-  //   expect(join(lists1, '--')).toBe('1--1--2--3--4--4')
-  // })
+  test('mergeTwoLists 2', () => {
+    // expect(linkedJoin(lists2, '--')).toBe('1--1--2--3--4--4')
+  })
 })

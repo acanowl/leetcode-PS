@@ -1,13 +1,24 @@
-import { DoubleLinkedList } from '@ao/data-structure'
+import { DoubleLinkedList, LinkedList } from '@ao/data-structure'
+
+let simpleLinkedList = new LinkedList()
+
+describe('simpleLinked', () => {
+  simpleLinkedList.concat(1, 2, 3, [1, 2, 3])
+  test('after append', () => {
+    expect(simpleLinkedList.join('-->')).toBe('1-->2-->3-->1-->2-->3')
+  })
+})
 
 let dbLinkedList = new DoubleLinkedList()
 
 describe('doubleLinked', () => {
 
-  dbLinkedList.append(10)
-  dbLinkedList.append(15)
-  dbLinkedList.append(20)
-  dbLinkedList.append(25)
+  // dbLinkedList.append(10)
+  // dbLinkedList.append(15)
+  // dbLinkedList.append(20)
+  // dbLinkedList.append(25)
+  dbLinkedList.concat(10, 15, 20, 25)
+
   test('after append', () => {
     expect(dbLinkedList.join('<->')).toBe('10<->15<->20<->25')
   })
