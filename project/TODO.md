@@ -12,3 +12,8 @@
 1. add \*.test.js for all test files of project/collecion ✔
 2. ~~learn `unplugin-auto-import`, try to auto import packages of myself.~~
 3. 1668, get other answer. ✔
+
+**22/11/9**
+
+1. 二叉树深拷贝方法
+2. 链表拷贝、数组生成链表方法

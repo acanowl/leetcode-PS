@@ -13,6 +13,7 @@ let list1 = linkedList1.head,
 const lists1 = mergeTwoLists_1(list1, list2)
 // const lists2 = mergeTwoLists_2(list1, list2)
 
+// FIXME mergeTwoLists方法改变了linkedList1/2，需拷贝一个新的实例， 否则会造成死循环 22/11/9
 describe('mergeTwoLists', () => {
   test('mergeTwoLists 1', () => {
     expect(linkedJoin(lists1, '--')).toBe('1--1--2--3--4--4')

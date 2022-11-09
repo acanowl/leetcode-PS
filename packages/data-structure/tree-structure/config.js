@@ -50,4 +50,24 @@ export const createBinaryTree = arr => {
 	return root
 }
 
-createBinaryTree([1, 2, 3, null, 5, 6, 7, 8, 9])
+/**
+ * TODO
+ * 克隆
+ * @param {*} root
+ * @returns
+ */
+export const deepCloneBinaryTree = root => {
+	if (!root) return root
+
+	let arr = [root]
+	while (arr.length) {
+		let cur = arr.shift()
+		if (cur.left) {
+			arr.push(cur.left)
+		}
+		if (cur.right) {
+			arr.push(cur.right)
+		}
+	}
+	// return newRoot
+}
