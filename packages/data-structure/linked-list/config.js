@@ -24,7 +24,7 @@ export class DoubleListNode {
 }
 
 // 序列化链表
-export const linkedJoin = (nodelists, string) => {
+export const linkedJoin = (nodelists, string = '--') => {
   let cur = nodelists
   let str = ''
   while (cur) {
@@ -47,4 +47,52 @@ export function linkedConcat(...items) {
       this.append(item)
     }
   }
+}
+
+/**
+ * 数组转换单链表
+ * @param {*} arr
+ * @returns
+ */
+export const createLinked = arr => {
+  let linked = new ListNode()
+  let prev = linked
+  if (!arr) return null
+
+  while (arr.length) {
+    let cur = arr.shift()
+    prev.next = new ListNode(cur)
+    prev = prev.next
+  }
+  return linked.next
+}
+
+/**
+ * 数组转换双链表( 正确性待待验证 )
+ * @param {*} arr
+ * @returns
+ */
+/* export const createDoubleLinked = arr => {
+  let linked = new DoubleListNode()
+  let prev = linked
+  if (!arr) return null
+
+  while (arr.length) {
+    let cur = arr.shift()
+    prev.next = new DoubleListNode(cur)
+    let tem = prev
+    prev = prev.next
+    prev.prev = tem
+  }
+  return linked.next
+} */
+
+export const deepCloneLinked = linked => {
+  const dpClone = linked => {
+    if (!linked) return null
+    let cur = new ListNode(linked.val)
+    cur.next = dpClone(linked.next)
+    return cur
+  }
+  return dpClone(linked)
 }

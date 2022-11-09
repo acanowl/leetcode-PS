@@ -1,15 +1,34 @@
-import { DoubleLinkedList, LinkedList } from '@ao/data-structure'
+import { LinkedList, linkedJoin, createLinked, deepCloneLinked } from '@ao/data-structure'
+import { mergeTwoLists_1 } from '../collection/21.合并两个有序链表'
 
-let simpleLinkedList = new LinkedList()
-
-describe('simpleLinked', () => {
-  simpleLinkedList.concat(1, 2, 3, [1, 2, 3])
+describe('singleLinked', () => {
+  let singleLinkedList = new LinkedList()
+  singleLinkedList.concat(1, 2, 3, [1, 2, 3])
   test('after append', () => {
-    expect(simpleLinkedList.join('-->')).toBe('1-->2-->3-->1-->2-->3')
+    expect(singleLinkedList.join('-->')).toBe('1-->2-->3-->1-->2-->3')
   })
 })
 
-let dbLinkedList = new DoubleLinkedList()
+describe('simpleLinked', () => {
+  const simpleLinked = createLinked([1, 2, 3, 4])
+  const otherLined = createLinked([0, 8])
+  test('linked', () => {
+    console.log(createLinked([1, 2, 3, 4]))
+    expect(linkedJoin(simpleLinked)).toBe('1--2--3--4')
+  })
+
+  test('clone', () => {
+    const cloneLined = deepCloneLinked(simpleLinked)
+    mergeTwoLists_1(simpleLinked, otherLined)
+    expect(linkedJoin(cloneLined)).toBe('1--2--3--4')
+  })
+})
+
+/**
+ * import { DoubleLinkedList } from '@ao/data-structure'
+ * TODO 无证据说明prev指向为正确. 待重新验证
+ */
+/* let dbLinkedList = new DoubleLinkedList()
 
 describe('doubleLinked', () => {
   // dbLinkedList.append(10)
@@ -54,4 +73,4 @@ describe('doubleLinked', () => {
     expect(dbLinkedList.remove(100)).toBe(null)
     expect(dbLinkedList.join('<->')).toBe('18<->20<->25<->30')
   })
-})
+}) */
