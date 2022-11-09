@@ -78,6 +78,7 @@ var inorderTraversal = function (root) {
     arr.push(root.val)
     root.right && traversal(root.right)
   }
+  traversal(root)
   return arr
 }
 ```

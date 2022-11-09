@@ -33,5 +33,6 @@ export const inorderTraversal_2 = root => {
     arr.push(root.val)
     root.right && traversal(root.right)
   }
+  traversal(root)
   return arr
 }
