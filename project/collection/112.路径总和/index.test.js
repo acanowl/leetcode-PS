@@ -1,13 +1,13 @@
-import { createBinaryTree } from '@ao/data-structure'
+import { createBinaryTree, deepCloneBinaryTree } from '@ao/data-structure'
 import { hasPathSum_1, hasPathSum_2 } from './index'
 
 let root_1 = createBinaryTree([3, null, 15])
 let root_2 = createBinaryTree([1, 2, 2, null, 3, null, 3])
 let root_3 = createBinaryTree([9, -42, -42, null, 76, 76, null, null, 13, null, 13])
 
-let root_4 = createBinaryTree([3, null, 15])
-let root_5 = createBinaryTree([1, 2, 2, null, 3, null, 3])
-let root_6 = createBinaryTree([9, -42, -42, null, 76, 76, null, null, 13, null, 13])
+let root_4 = deepCloneBinaryTree(root_1)
+let root_5 = deepCloneBinaryTree(root_2)
+let root_6 = deepCloneBinaryTree(root_3)
 
 describe('hasPathSum', () => {
 	test('answer 1', () => {

@@ -6,11 +6,11 @@
  * @return {*}
  */
 export class BinaryTreeNode {
-	constructor(val, left, right) {
-		this.val = val === undefined ? 0 : val
-		this.left = left === undefined ? null : left
-		this.right = right === undefined ? null : right
-	}
+  constructor(val, left, right) {
+    this.val = val === undefined ? 0 : val
+    this.left = left === undefined ? null : left
+    this.right = right === undefined ? null : right
+  }
 }
 
 /**
@@ -19,55 +19,71 @@ export class BinaryTreeNode {
  * @returns
  */
 export const createBinaryTree = arr => {
-	if (arr.length === 0 || !Array.isArray(arr)) return null
+  if (arr.length === 0 || !Array.isArray(arr)) return null
 
-	let root = new BinaryTreeNode(arr.shift())
-	let nodeQueue = [root]
+  let root = new BinaryTreeNode(arr.shift())
+  let nodeQueue = [root]
 
-	while (arr.length) {
-		const cur = nodeQueue.shift()
+  while (arr.length) {
+    const cur = nodeQueue.shift()
 
-		if (!arr.length) break
+    if (!arr.length) break
 
-		const left = arr.shift()
-		if (left) {
-			const leftNode = new BinaryTreeNode(left)
+    const left = arr.shift()
+    if (left) {
+      const leftNode = new BinaryTreeNode(left)
+      cur.left = leftNode
+      nodeQueue.push(leftNode)
+    }
 
-			cur.left = leftNode
-			nodeQueue.push(leftNode)
-		}
+    if (!arr.length) break
 
-		if (!arr.length) break
-
-		const right = arr.shift()
-		if (right) {
-			const rightNode = new BinaryTreeNode(right)
-
-			cur.right = rightNode
-			nodeQueue.push(rightNode)
-		}
-	}
-	return root
+    const right = arr.shift()
+    if (right) {
+      const rightNode = new BinaryTreeNode(right)
+      cur.right = rightNode
+      nodeQueue.push(rightNode)
+    }
+  }
+  return root
 }
 
 /**
- * TODO
+ * 二叉树转换成数组
+ * @param {*} root
+ * @returns
+ */
+export const binaryTreeToArray = root => {
+  if (!root) return null
+  let arr = [root],
+    res = []
+  while (arr.length) {
+    let cur = arr.shift()
+    if (!cur) {
+      res.push(null)
+      continue
+    }
+    res.push(cur.val)
+    if (cur.left || cur.right) {
+      arr.push(cur.left)
+      arr.push(cur.right)
+    }
+  }
+  return res
+}
+
+/**
  * 克隆
  * @param {*} root
  * @returns
  */
 export const deepCloneBinaryTree = root => {
-	if (!root) return root
-
-	let arr = [root]
-	while (arr.length) {
-		let cur = arr.shift()
-		if (cur.left) {
-			arr.push(cur.left)
-		}
-		if (cur.right) {
-			arr.push(cur.right)
-		}
-	}
-	// return newRoot
+  const dpClone = root => {
+    if (!root) return null
+    let cur = new BinaryTreeNode(root.val)
+    cur.left = dpClone(root.left)
+    cur.right = dpClone(root.right)
+    return cur
+  }
+  return dpClone(root)
 }
