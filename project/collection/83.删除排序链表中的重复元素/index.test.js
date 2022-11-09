@@ -1,14 +1,7 @@
-import { LinkedList, linkedJoin } from '@ao/data-structure'
+import { linkedJoin, createLinked } from '@ao/data-structure'
 import { deleteDuplicates_1, deleteDuplicates_2 } from './index'
 
-let linkedList1 = new LinkedList()
-let linkedList2 = new LinkedList()
-
-linkedList1.concat([1, 1, 2, 3, 3])
-linkedList2.concat([-1, 0, 0, 0, 0, 3, 3])
-
-let heads_1 = linkedList1.head
-let heads_2 = linkedList2.head
+let [heads_1, heads_2] = createLinked([1, 1, 2, 3, 3], [-1, 0, 0, 0, 0, 3, 3])
 
 describe('deleteDuplicates', () => {
   test('answer 1', () => {
