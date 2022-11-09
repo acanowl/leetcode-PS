@@ -15,37 +15,45 @@ export class BinaryTreeNode {
 
 /**
  * 数组转换成二叉树
- * @param {*} arr
- * @returns
+ * @param  {...any} arg 
+ * @returns 
  */
-export const createBinaryTree = arr => {
-  if (arr.length === 0 || !Array.isArray(arr)) return null
+export const createBinaryTree = (...arg) => {
+  const createFn = arr => {
+    if (arr.length === 0 || !Array.isArray(arr)) return null
 
-  let root = new BinaryTreeNode(arr.shift())
-  let nodeQueue = [root]
+    let root = new BinaryTreeNode(arr.shift())
+    let nodeQueue = [root]
 
-  while (arr.length) {
-    const cur = nodeQueue.shift()
+    while (arr.length) {
+      const cur = nodeQueue.shift()
 
-    if (!arr.length) break
+      if (!arr.length) break
 
-    const left = arr.shift()
-    if (left) {
-      const leftNode = new BinaryTreeNode(left)
-      cur.left = leftNode
-      nodeQueue.push(leftNode)
+      const left = arr.shift()
+      if (left) {
+        const leftNode = new BinaryTreeNode(left)
+        cur.left = leftNode
+        nodeQueue.push(leftNode)
+      }
+
+      if (!arr.length) break
+
+      const right = arr.shift()
+      if (right) {
+        const rightNode = new BinaryTreeNode(right)
+        cur.right = rightNode
+        nodeQueue.push(rightNode)
+      }
     }
-
-    if (!arr.length) break
-
-    const right = arr.shift()
-    if (right) {
-      const rightNode = new BinaryTreeNode(right)
-      cur.right = rightNode
-      nodeQueue.push(rightNode)
-    }
+    return root
   }
-  return root
+
+  let binaryTreeLists = []
+  for (let i = 0; i < arg.length; i++) {
+    binaryTreeLists.push(createFn(arg[i]))
+  }
+  return binaryTreeLists.length === 1 ? binaryTreeLists[0] : binaryTreeLists
 }
 
 /**
@@ -73,17 +81,25 @@ export const binaryTreeToArray = root => {
 }
 
 /**
- * 克隆
- * @param {*} root
- * @returns
+ * 二叉树深拷贝
+ * @param  {...any} arg 
+ * @returns 
  */
-export const deepCloneBinaryTree = root => {
-  const dpClone = root => {
-    if (!root) return null
-    let cur = new BinaryTreeNode(root.val)
-    cur.left = dpClone(root.left)
-    cur.right = dpClone(root.right)
-    return cur
+export const deepCloneBinaryTree = (...arg) => {
+  const cloneFn = root => {
+    const dpClone = root => {
+      if (!root) return null
+      let cur = new BinaryTreeNode(root.val)
+      cur.left = dpClone(root.left)
+      cur.right = dpClone(root.right)
+      return cur
+    }
+    return dpClone(root)
   }
-  return dpClone(root)
+
+  let binaryTreeLists = []
+  for (let i = 0; i < arg.length; i++) {
+    binaryTreeLists.push(cloneFn(arg[i]))
+  }
+  return binaryTreeLists.length === 1 ? binaryTreeLists[0] : binaryTreeLists
 }

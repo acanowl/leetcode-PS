@@ -51,20 +51,27 @@ export function linkedConcat(...items) {
 
 /**
  * 数组转换单链表
- * @param {*} arr
- * @returns
+ * @param  {...any} arg 
+ * @returns 
  */
-export const createLinked = arr => {
-  let linked = new ListNode()
-  let prev = linked
-  if (!arr) return null
+export const createLinked = (...arg) => {
+  const createFn = arr => {
+    let linked = new ListNode()
+    let prev = linked
+    if (!arr) return null
 
-  while (arr.length) {
-    let cur = arr.shift()
-    prev.next = new ListNode(cur)
-    prev = prev.next
+    while (arr.length) {
+      let cur = arr.shift()
+      prev.next = new ListNode(cur)
+      prev = prev.next
+    }
+    return linked.next
   }
-  return linked.next
+  let linkedLists = []
+  for (let i = 0; i < arg.length; i++) {
+    linkedLists.push(createFn(arg[i]))
+  }
+  return linkedLists.length === 1 ? linkedLists[0] : linkedLists
 }
 
 /**
@@ -87,12 +94,25 @@ export const createLinked = arr => {
   return linked.next
 } */
 
-export const deepCloneLinked = linked => {
-  const dpClone = linked => {
-    if (!linked) return null
-    let cur = new ListNode(linked.val)
-    cur.next = dpClone(linked.next)
-    return cur
+/**
+ * 链表深拷贝
+ * @param  {...any} arg 支持多个拷贝
+ * @returns 
+ */
+export const deepCloneLinked = (...arg) => {
+  const cloneFn = linked => {
+    const dpClone = linked => {
+      if (!linked) return null
+      let cur = new ListNode(linked.val)
+      cur.next = dpClone(linked.next)
+      return cur
+    }
+    return dpClone(linked)
   }
-  return dpClone(linked)
+
+  let linkedLists = []
+  for (let i = 0; i < arg.length; i++) {
+    linkedLists.push(cloneFn(arg[i]))
+  }
+  return linkedLists.length === 1 ? linkedLists[0] : linkedLists
 }
