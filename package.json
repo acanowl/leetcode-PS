@@ -4,16 +4,19 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "test": "vitest --ui"
+    "test": "vitest --ui",
+    "mkdir:ps": "node mkdirs.js --name project/collection/"
   },
   "keywords": [],
   "author": "Eddy",
   "license": "ISC",
   "dependencies": {
     "@ao/data-structure": "workspace:^0.0.1",
+    "@ao/utils": "workspace:^0.0.1",
     "@vitest/ui": "^0.24.5",
     "unplugin-auto-import": "^0.11.4",
     "vite": "^3.2.0",
-    "vitest": "^0.24.5"
+    "vitest": "^0.24.5",
+    "yargs": "^17.6.2"
   }
 }
