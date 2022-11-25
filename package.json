@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest --ui",
-    "mkdir:ps": "node mkdirs.js --name project/collection/"
+    "ps": "node mkdirs.js --exec createProblemSet"
   },
   "keywords": [],
   "author": "Eddy",
