@@ -5,7 +5,8 @@ import { resolve } from 'path'
 
 const argv = yargs(hideBin(process.argv)).argv
 const { exec, _ } = argv
-const [filename] = _
+const [code, title] = _
+let filename = title ? `${code}.${title}` : code
 
 /**
  * 生成算法题集md模板
